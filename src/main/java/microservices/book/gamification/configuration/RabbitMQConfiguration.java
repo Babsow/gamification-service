@@ -1,9 +1,6 @@
 package microservices.book.gamification.configuration;
 
 
-
-import com.fasterxml.jackson.databind.ser.std.StdKeySerializers.Default;
-
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
@@ -32,7 +29,7 @@ public class RabbitMQConfiguration implements RabbitListenerConfigurer {
 
     @Bean
     Binding binding(final Queue queue , final TopicExchange exchange,
-                    @Value("${multiplicarion.anything.routing-key}") final String routingKey)){
+                    @Value("${multiplicarion.anything.routing-key}") final String routingKey){
         return BindingBuilder.bind(queue).to(exchange).with(routingKey);
     }
 
